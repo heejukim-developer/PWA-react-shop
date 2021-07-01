@@ -1,21 +1,24 @@
 import logo from './logo.svg';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import React, { useEffect, useState ,useContext,lazy,Suspense} from 'react';
 import Data from './data';
 // import Detail from './Detail.js';
 import axios from 'axios';
 import Cart from './Cart';
+import './Detail.scss';
 import {Link, Route, Switch, useHistory} from 'react-router-dom';
+import Best from './Best';
+
 let Detail = lazy(()=> import('./Detail'));
 
-
+ 
 export let 재고context = React.createContext();
 
 
 function App() {
-
+let [inputData , inputData변경] = useState('');
 let [데이터,데이터변경]= useState(Data)
 let [Loding, Lodingchange]= useState(true);
 let [재고,재고변경]= useState([10,11,12]);
@@ -25,40 +28,44 @@ useEffect(()=>{
 
   return (
     
-    <div className="App">
+<div className="App">
 
 <Navbar bg="light" expand="lg">
   <Container>
-    <Navbar.Brand href="#home">PET-SHOP</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Brand>PET-SHOP</Navbar.Brand>
+    
+    <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link><Link to ="/">Home</Link></Nav.Link>
-        <Nav.Link><Link to ="/detail">Detail</Link></Nav.Link>
+        {/* <Nav.Link><Link to ="/detail">Detail</Link></Nav.Link> */}
         <NavDropdown title="Shopping" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Best</NavDropdown.Item>
+          <NavDropdown.Item href="/best">Best</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">옷</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">용품</NavDropdown.Item>
-          {/* <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
         </NavDropdown>
-        <Nav.Link href="#link">Customer</Nav.Link>
       </Nav>
+      <Nav.Link><Link to ="/Cart"> 장바구니
+        </Link></Nav.Link>
+      <input className="search" onChange= {(e)=>{inputData변경(e.target.value)}}>
+      </input>
     </Navbar.Collapse>
+   
   </Container>
+
 </Navbar>
+
 
 
 <Route exact path ="/">
 
  <div class ="welcome">
- <h2> 20% sale off </h2>
+ <h2> 20% sale off</h2>
   <p>어서오세요 애완용품 판매 홈페이지 입니다 </p>
   <Button variant="outline-secondary">Learn more</Button>{' '}
   </div>
 
   <div className="container">
-
     <재고context.Provider value={재고}>
   <div className="row">
   {
@@ -68,15 +75,9 @@ useEffect(()=>{
     }
   </div>
    </재고context.Provider>
+
   <button className = "btn btn-primary" onClick = {()=>{
   Lodingchange(true)
-  //  { 
-  //    Loding === true
-  //    ? (<div className="로딩">
-  //    <h2>로딩중입니다</h2>
-  //   </div>)
-  //    : null
-  //  }
     axios.post('서버url',{id:'heeju',pw:'12345'})
     axios.get('https://codingapple1.github.io/shop/data2.json')
     .then((result)=>{
@@ -103,13 +104,22 @@ useEffect(()=>{
   </재고context.Provider>
 </Route>
 
+{/* <Route path ="/detail/2">
+<image src= "https://github.com/heejukim-developer/shop/blob/master/src/3.jpg?raw=true"></image>
+</Route> */}
+
 <Route path ="/cart">
   <Cart></Cart>
 </Route>
 
+{/* <Route path ="/best" Component={Card}>
+</Route> */}
+
 <Route path ="/:id">
   <div> 페이지가 없습니다 </div>
 </Route>
+
+
 
 </Switch>
 
@@ -142,8 +152,10 @@ function Card(props) {
   return(
    <div className= "col-md-4" onClick={()=>{history.push('/detail/'+props.shoes.id)}}>
    <img src= {'https://github.com/heejukim-developer/shop/blob/master/src/'+ (props.i +1) + '.jpg?raw=true'} width="100%" />
+   {/* {props.shoes.img} */}
     <h5> {props.shoes.title} </h5>
-    <p> {props.shoes.price} {props.shoes.content}</p>
+    <p> {props.shoes.price} </p>
+    {/* {props.shoes.content} */}
   
     <Test></Test>
     

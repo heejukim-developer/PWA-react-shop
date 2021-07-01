@@ -8,6 +8,7 @@ function Cart(props){
     
 return(
 <div>
+<p>장바구니</p>
 <Table striped bordered hover>
     <tr>
       <th>#</th>

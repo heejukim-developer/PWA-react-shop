@@ -25,23 +25,22 @@ useEffect(()=>{
 },[]);
 
 let [alert, alert변경]= useState(true);
-let [inputData , inputData변경] = useState('');
+
 let { id } = useParams();
 let history = useHistory();
 let 찾은상품 = props.shoes작명.find(x=>x.id==id);
 let [누른탭,누른탭변경]= useState(0);
 let [스위치,스위치변경]= useState(false);
+let [입력번호,입력번호변경] = useState('1,2,3');
 
 
 
     return(
       <div className="container">
         <박스>
-           <제목 className='red'>상세페이지</제목>
+           <제목 className='color'>상세페이지</제목>
         </박스>
 
-    <input onChange= {(e)=>{inputData변경(e.target.value)}}>
-    </input>
         {
             alert === true
             ?(<div className="my-alert2">
@@ -51,13 +50,19 @@ let [스위치,스위치변경]= useState(false);
         : null
         }
         
-
         <div className="row">
           <div className="col-md-6">
-            <img src="https://github.com/heejukim-developer/shop/blob/master/src/1.jpg?raw=true" width="100%" />
+            {
+            
+         <img src={'https://github.com/heejukim-developer/shop/blob/master/src/'+ 
+          입력번호변경(id)+'.jpg?raw=true'} width="100%" />
+          
+            }
           </div>
           <div className="col-md-6 mt-4">
-            <h4 className="pt-5">{찾은상품.title}</h4>
+            <h4 className="pt-5">
+              
+                {찾은상품.title}</h4>
             <p>{찾은상품.content}</p>
             <p>{찾은상품.price}</p>
 
@@ -79,10 +84,10 @@ let [스위치,스위치변경]= useState(false);
 
   <Nav className = "mt-5" variant="tabs" defaultActiveKey="link-0">
     <Nav.Item>
-        <Nav.Link eventKey="link-0" onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>Active</Nav.Link>
+        <Nav.Link eventKey="link-0" onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>세부사항</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-        <Nav.Link eventKey="link-1" onClick = {()=>{스위치변경(false); 누른탭변경(1)}}>Option 2</Nav.Link>
+        <Nav.Link eventKey="link-1" onClick = {()=>{스위치변경(false); 누른탭변경(1)}}>배송관련</Nav.Link>
     </Nav.Item>
     </Nav>
 
