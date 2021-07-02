@@ -8,8 +8,12 @@ import Data from './data';
 import axios from 'axios';
 import Cart from './Cart';
 import './Detail.scss';
-import {Link, Route, Switch, useHistory} from 'react-router-dom';
-import Best from './Best';
+import { fa-shopping-cart} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Link, Route, Switch, useHistory, useParams} from 'react-router-dom';
+
+
+
 
 let Detail = lazy(()=> import('./Detail'));
 
@@ -32,7 +36,7 @@ useEffect(()=>{
 
 <Navbar bg="light" expand="lg">
   <Container>
-    <Navbar.Brand>PET-SHOP</Navbar.Brand>
+    <Navbar.Brand><Link to ="/">PET-SHOP</Link></Navbar.Brand>
     
     <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
     <Navbar.Collapse id="basic-navbar-nav">
@@ -45,8 +49,11 @@ useEffect(()=>{
           <NavDropdown.Item href="#action/3.3">용품</NavDropdown.Item>
         </NavDropdown>
       </Nav>
-      <Nav.Link><Link to ="/Cart"> 장바구니
-        </Link></Nav.Link>
+
+      <Nav.Link><Link to ="/Cart">
+        <div className="shopcart">
+        <FontAwesomeIcon icon = {fa-shopping-cart}/> 장바구니
+        </div></Link></Nav.Link>
       <input className="search" onChange= {(e)=>{inputData변경(e.target.value)}}>
       </input>
     </Navbar.Collapse>
@@ -112,9 +119,6 @@ useEffect(()=>{
   <Cart></Cart>
 </Route>
 
-{/* <Route path ="/best" Component={Card}>
-</Route> */}
-
 <Route path ="/:id">
   <div> 페이지가 없습니다 </div>
 </Route>
@@ -151,8 +155,12 @@ function Card(props) {
   let history =useHistory();
   return(
    <div className= "col-md-4" onClick={()=>{history.push('/detail/'+props.shoes.id)}}>
-   <img src= {'https://github.com/heejukim-developer/shop/blob/master/src/'+ (props.i +1) + '.jpg?raw=true'} width="100%" />
-   {/* {props.shoes.img} */}
+   
+   {/* <img src= {'https://github.com/heejukim-developer/shop/blob/master/src/'+ (props.i +1) + '.jpg?raw=true'} width="100%" /> */}
+   
+   <img src= {'https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/'+ 
+   props.i+ '.jpg?raw=true'} width="100%" />
+   
     <h5> {props.shoes.title} </h5>
     <p> {props.shoes.price} </p>
     {/* {props.shoes.content} */}
