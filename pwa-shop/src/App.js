@@ -1,17 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown, Button,ButtonGroup  } from 'react-bootstrap';
 import React, { useEffect, useState ,useContext,lazy,Suspense} from 'react';
 import Data from './data';
 // import Detail from './Detail.js';
 import axios from 'axios';
 import Cart from './Cart';
 import './Detail.scss';
-import { fa-shopping-cart} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link, Route, Switch, useHistory, useParams} from 'react-router-dom';
-
+import {FiShoppingCart } from 'react-icons/fi';
+import {AiOutlineSearch} from 'react-icons/ai';
 
 
 
@@ -50,12 +49,15 @@ useEffect(()=>{
         </NavDropdown>
       </Nav>
 
-      <Nav.Link><Link to ="/Cart">
-        <div className="shopcart">
-        <FontAwesomeIcon icon = {fa-shopping-cart}/> 장바구니
-        </div></Link></Nav.Link>
+        
+        <AiOutlineSearch color="#0000008C" size="25px" />
       <input className="search" onChange= {(e)=>{inputData변경(e.target.value)}}>
       </input>
+
+      <Nav.Link>
+        <Link to ="/Cart">
+        <FiShoppingCart/> Cart
+        </Link></Nav.Link>
     </Navbar.Collapse>
    
   </Container>
@@ -164,6 +166,10 @@ function Card(props) {
     <h5> {props.shoes.title} </h5>
     <p> {props.shoes.price} </p>
     {/* {props.shoes.content} */}
+    <ButtonGroup size="sm">
+    <Button className ="btn-sale">Sale</Button>
+    <Button className ="btn-best">Best</Button>
+  </ButtonGroup>
   
     <Test></Test>
     

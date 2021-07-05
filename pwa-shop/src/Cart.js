@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table,CloseButton } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 

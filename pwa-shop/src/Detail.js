@@ -7,6 +7,7 @@ import './Detail.scss';
 import { Nav } from 'react-bootstrap';
 import {CSSTransition} from 'react-transition-group';
 import{connect} from 'react-redux';
+import {CgArrowLeft,CgArrowRight} from 'react-icons/cg';
 
 let 박스 = styled.div`
     padding: 20px;
@@ -35,10 +36,21 @@ let [스위치,스위치변경]= useState(false);
 
 
     return(
+        
       <div className="container">
         <박스>
-           <제목 className='color'>상세페이지</제목>
+        <제목 className='color'>상세페이지</제목>
+       
+
+        <div className="b-f">
+        <CgArrowLeft className="back"  color="gray" size="50px"
+           onClick={()=>{history.goBack()}}/>
+        <CgArrowRight className="front"  color="gray" size="50px"
+           onClick={()=>{history.goBack()}}/>
+           
+        </div>
         </박스>
+        
 
         {
             alert === true

@@ -1,7 +1,20 @@
 $글자색:gray;
+.b-f{
+    display: block !important;
+}
+.back{
+    text-align: start !important;
+    margin-right: 320px !important;
+}
+.front{
+    text-align:end !important;
+    // margin-right: 100px !important;
+}
+
 .wow-enter{
 opacity: 0;
 }
+
 .wow-enter-active{
     opacity: 1;
     transition: all 500ms;
@@ -11,6 +24,10 @@ opacity: 0;
     color:$글자색;
 }
 
+.btn btn-danger{
+ 
+    border-radius: 0% !important;
+  }
 @mixin 함수 {
     background: #eeeeee;
     padding: 20px;
