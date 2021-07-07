@@ -46,7 +46,7 @@ let [스위치,스위치변경]= useState(false);
         <CgArrowLeft className="back"  color="gray" size="50px"
            onClick={()=>{history.goBack()}}/>
         <CgArrowRight className="front"  color="gray" size="50px"
-           onClick={()=>{history.goBack()}}/>
+           onClick={()=>{history.goForward()}}/>
            
         </div>
         </박스>
@@ -82,14 +82,14 @@ let [스위치,스위치변경]= useState(false);
 
             <Info 재고작명 ={props.재고작명 }></Info>
 
-            <button className="btn btn-danger" onClick ={()=>{
+            <button className="btn-danger" onClick ={()=>{
                 props.재고변경작명([9,11,12]);
                 props.dispatch({type:'항목추가',장바구니데이터:{id:찾은상품.id, name:찾은상품.title,
                 quan:1}});
             history.push('/cart');
             }}>주문하기</button> 
 
-            <button className="btn btn-danger" onClick={()=>{
+            <button className="btn-danger2" onClick={()=>{
              history.goBack();
             }}>뒤로가기</button> 
 
@@ -98,7 +98,8 @@ let [스위치,스위치변경]= useState(false);
 
   <Nav className = "mt-5" variant="tabs" defaultActiveKey="link-0">
     <Nav.Item>
-        <Nav.Link eventKey="link-0" onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>세부사항</Nav.Link>
+        <Nav.Link eventKey="link-0" 
+        onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>세부사항</Nav.Link>
     </Nav.Item>
     <Nav.Item>
         <Nav.Link eventKey="link-1" onClick = {()=>{스위치변경(false); 누른탭변경(1)}}>배송관련</Nav.Link>
@@ -118,7 +119,7 @@ function TabContent(props){
  })
 
     if(props.누른탭작명 === 0){
-        return <div>0번째 내용입니다</div>
+        return <div><button className="sebu">세부사항을 확인하세요</button></div>
     }else if(props.누른탭작명 === 1){
         return<div>1번째 내용입니다</div>
     }else if(props.누른탭작명 === 2){

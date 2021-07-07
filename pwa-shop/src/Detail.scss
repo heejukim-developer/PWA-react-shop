@@ -24,8 +24,21 @@ opacity: 0;
     color:$글자색;
 }
 
-.btn btn-danger{
- 
+.btn-danger{
+    height:40px;
+    width: 100px;
+    background:#ff5858!important;
+    border: 1px solid #ff5858!important;
+    border-radius: 0% !important;
+    margin-right: 10px;
+  }
+
+  .btn-danger2{
+    height:40px;
+    width: 100px;
+    color:white;
+    background:#ff5858!important;
+    border: 1px solid #ff5858!important;
     border-radius: 0% !important;
   }
 @mixin 함수 {
@@ -52,3 +65,15 @@ opacity: 0;
     margin-bottom: 0;
 }
 
+.sebu{
+    width: 200px;
+    height: 100px;
+    margin: 50px;
+    font-size: 20px;
+    border: 1px solid ;
+    color:white;
+    background:#ff5858;
+    border: 1px solid #ff5858;
+    border-radius: 0% ;
+    
+}
