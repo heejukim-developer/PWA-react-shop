@@ -4,7 +4,7 @@ import { Route, useHistory , useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
 // import {재고context} from './App.js';
-import { Nav } from 'react-bootstrap';
+import { Nav , Button ,Dropdown} from 'react-bootstrap';
 import {CSSTransition} from 'react-transition-group';
 import{connect} from 'react-redux';
 import {CgArrowLeft,CgArrowRight} from 'react-icons/cg';
@@ -75,23 +75,64 @@ let [스위치,스위치변경]= useState(false);
           </div>
           <div className="col-md-6 mt-4">
             <h4 className="pt-5">
-              {찾은상품.title}</h4>
-            <p>{찾은상품.content}</p>
-            <p>{찾은상품.price}</p>
+                {찾은상품.title}</h4>
 
+            <span className="per">
+            <p className="per_number">{찾은상품.number}</p>
+            <p className="percentage">%</p>
+            <p className="price">{찾은상품.price}</p>
+           </span>
+           <h4>{찾은상품.real_price}</h4>
+           
+        
+           <h5 className ="info"> <Info 재고작명 ={props.재고작명}></Info></h5>
+            
 
-            <Info 재고작명 ={props.재고작명 }></Info>
+  <Dropdown>
 
-            <button className="btn-danger" onClick ={()=>{
-                props.재고변경작명([9,11,12]);
-                props.dispatch({type:'항목추가',장바구니데이터:{id:찾은상품.id, name:찾은상품.title,
-                quan:1}});
-            history.push('/cart');
-            }}>주문하기</button> 
+    <Dropdown.Toggle className="dropdown-basic">
+         Color
+    </Dropdown.Toggle>
+    <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">black</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">white</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">red</Dropdown.Item>
+   </Dropdown.Menu>
+</Dropdown>
 
-            <button className="btn-danger2" onClick={()=>{
-             history.goBack();
-            }}>뒤로가기</button> 
+<Dropdown>
+<Dropdown.Toggle className="dropdown-basic2">
+         Size
+ </Dropdown.Toggle>
+<Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">S</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">M</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">L</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">XL</Dropdown.Item>
+
+  </Dropdown.Menu>
+  </Dropdown>
+
+  <span className="order">
+     <p className="order_price">주문금액</p> 
+      <p className="order__price">{찾은상품.real_price}</p>
+      </span>
+
+    <div className="d-grid gap-2">
+     <Button className="primary" size="lg" 
+     onClick ={()=>{
+        props.재고변경작명([9,11,12]);
+        props.dispatch({type:'항목추가',
+        장바구니데이터:{id:찾은상품.id, name:찾은상품.title,quan:1}});
+    history.push('/cart');
+    }}>
+           Add to Cart
+     </Button>
+
+     <Button className="secondary" size="lg">
+        바로구매하기
+    </Button>
+        </div>
 
           </div>
         </div>
@@ -119,7 +160,9 @@ function TabContent(props){
  })
 
     if(props.누른탭작명 === 0){
-        return <div><button className="sebu">세부사항을 확인하세요</button></div>
+        return <div>
+          {/* <button className="sebu">세부사항을 확인하세요</button> */}
+        </div> 
     }else if(props.누른탭작명 === 1){
         return<div>1번째 내용입니다</div>
     }else if(props.누른탭작명 === 2){
@@ -127,6 +170,8 @@ function TabContent(props){
     }
 
   }
+  
+
   
   function Info(props){
       return(

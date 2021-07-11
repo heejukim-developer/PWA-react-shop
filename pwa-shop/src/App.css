@@ -64,9 +64,10 @@ a{
   margin-top: 50px;
 }
 .btn-primary{
-  background: #61dafb;
-  border-radius: 5px;
-  border-color: #eeeeee;
+  background: #fee140 !important;
+  border-radius: 0px!important;
+  border-color: #eeeeee!important;
+  color: #282c34!important;
 }
 .btn-sale{
   background: #fe5356 !important;

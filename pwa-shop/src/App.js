@@ -85,22 +85,26 @@ useEffect(()=>{
   </div>
    </재고context.Provider>
 
-  <button className = "btn btn-primary" onClick = {()=>{
-  Lodingchange(true)
-    axios.post('서버url',{id:'heeju',pw:'12345'})
-    axios.get('https://codingapple1.github.io/shop/data2.json')
-    .then((result)=>{
-      Lodingchange(false)
-      console.log(result.data);
-      데이터변경([...데이터, ...result.data ]);
-    })
+  <button className = "btn btn-primary" 
   
-    .catch(()=>{ 
-      Lodingchange(false)
+  // onClick = {()=>{
+  // Lodingchange(true)
+  //   axios.post('서버url',{id:'heeju',pw:'12345'})
+  //   axios.get('https://codingapple1.github.io/shop/data2.json')
+  //   .then((result)=>{
+  //     Lodingchange(false)
+  //     console.log(result.data);
+  //     데이터변경([...데이터, ...result.data ]);
+  //   })
+  
+  //   .catch(()=>{ 
+  //     Lodingchange(false)
 
 
-      console.log('서버를 불러오는데 실패했어요')})
-  }}>더보기</button>
+  //     console.log('서버를 불러오는데 실패했어요')})
+  // }}
+  
+  >더보기</button>
   </div>
 </Route>
 

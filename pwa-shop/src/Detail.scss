@@ -1,4 +1,8 @@
 $글자색:gray;
+
+.pt-5 {
+    padding-top: 0px!important;
+}
 .b-f{
     display: block !important;
 }
@@ -23,24 +27,79 @@ opacity: 0;
 .color{
     color:$글자색;
 }
+.per{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 
-.btn-danger{
-    height:40px;
-    width: 100px;
-    background:#ff5858!important;
-    border: 1px solid #ff5858!important;
-    border-radius: 0% !important;
-    margin-right: 10px;
+
+}
+.price{
+    text-decoration:line-through;
+    margin-bottom: 5px;
+    color: #bdbdbd;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.info{
+    margin-top: 30px;
+}
+.dropdown-basic{
+    margin-top: 10px;
+    width: 400px;
+    color:#424242!important;
+    background:#ffffff!important;
+    border: 1px solid #09addb!important;
+    border-radius: 4px !important;
+
+  }
+  .dropdown-basic2{
+    margin-top: 10px;
+    width: 400px;
+    color:#424242!important;
+    background:#ffffff!important;
+    border: 1px solid #09addb!important;
+    border-radius: 4px !important;
+  
   }
 
-  .btn-danger2{
-    height:40px;
-    width: 100px;
-    color:white;
-    background:#ff5858!important;
-    border: 1px solid #ff5858!important;
-    border-radius: 0% !important;
+.order{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: space-between;
+    font-size: 23px;
+    font-weight: bold;
+    
+}
+.order_price{
+    
+}
+.order__price{
+  
+}
+
+.primary{
+    margin-top:20px;
+    color:#09addb!important;
+    background:white!important;
+    border: 1px solid #09addb!important;
+    border-radius: 20px !important;
+
   }
+
+  .secondary{
+  
+    color:white !important;
+    background:#09addb!important;
+    border: 1px solid #09addb!important;
+    border-radius:20px !important;
+
+  }
+
+  
 @mixin 함수 {
     background: #eeeeee;
     padding: 20px;
