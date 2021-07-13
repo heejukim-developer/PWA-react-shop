@@ -3,8 +3,9 @@ import React,{ useEffect, useState } from 'react';
 import { Route, useHistory , useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
+import './Cart.js';
 // import {재고context} from './App.js';
-import { Nav , Button ,Dropdown} from 'react-bootstrap';
+import { Nav,Button, Dropdown, Modal,Container,Row,Col,Form} from 'react-bootstrap';
 import {CSSTransition} from 'react-transition-group';
 import{connect} from 'react-redux';
 import {CgArrowLeft,CgArrowRight} from 'react-icons/cg';
@@ -33,6 +34,12 @@ let 찾은상품 = props.shoes작명.find(x=>x.id==id);
 let history = useHistory();
 let [누른탭,누른탭변경]= useState(0);
 let [스위치,스위치변경]= useState(false);
+
+let [show, setShow] = useState(false);
+
+let Close = () => setShow(false);
+let Show = () => setShow(true);
+
 
 
     return(
@@ -74,50 +81,72 @@ let [스위치,스위치변경]= useState(false);
             }
           </div>
           <div className="col-md-6 mt-4">
-            <h4 className="pt-5">
-                {찾은상품.title}</h4>
+            <h3 className="pt-5">
+                {찾은상품.title}</h3>
 
             <span className="per">
             <p className="per_number">{찾은상품.number}</p>
             <p className="percentage">%</p>
             <p className="price">{찾은상품.price}</p>
            </span>
-           <h4>{찾은상품.real_price}</h4>
-           
+
+           <span className="sale_price">
+           <h4 className="find">{찾은상품.real_price}</h4>
+           <button className="sale">특가</button>
+           </span>
+      
         
            <h5 className ="info"> <Info 재고작명 ={props.재고작명}></Info></h5>
             
-
-  <Dropdown>
-
-    <Dropdown.Toggle className="dropdown-basic">
-         Color
+           <span className="information">
+            <p className="normal">무료배송</p>
+            <p className="free">40,000원 이상 무료배송
+           </p>
+           </span>
+           <span className="information2">
+            <p className="normal2">구매혜택</p>
+            <p className="free2">5% 적립 또는 5% 즉시할인
+           </p>
+           </span>
+      
+  
+   
+    <Dropdown >
+    <span className="choice_color">
+    <p class ='_color'>색상</p>
+    <Dropdown.Toggle className="basic" >
+         [필수] 색상을 선택해주세요 
     </Dropdown.Toggle>
     <Dropdown.Menu>
     <Dropdown.Item href="#/action-1">black</Dropdown.Item>
     <Dropdown.Item href="#/action-2">white</Dropdown.Item>
     <Dropdown.Item href="#/action-3">red</Dropdown.Item>
    </Dropdown.Menu>
+   </span>
 </Dropdown>
 
 <Dropdown>
-<Dropdown.Toggle className="dropdown-basic2">
-         Size
+ <span className="choice_size">
+   <p className="_size">사이즈 </p> 
+<Dropdown.Toggle className="basic2">
+    [필수] 사이즈를 선택해주세요 
  </Dropdown.Toggle>
+ 
 <Dropdown.Menu>
     <Dropdown.Item href="#/action-1">S</Dropdown.Item>
     <Dropdown.Item href="#/action-2">M</Dropdown.Item>
     <Dropdown.Item href="#/action-3">L</Dropdown.Item>
     <Dropdown.Item href="#/action-3">XL</Dropdown.Item>
-
   </Dropdown.Menu>
-  </Dropdown>
+  </span>
+</Dropdown>
+
+
 
   <span className="order">
-     <p className="order_price">주문금액</p> 
+     <span className="order_price">주문금액</span> 
       <p className="order__price">{찾은상품.real_price}</p>
       </span>
-
     <div className="d-grid gap-2">
      <Button className="primary" size="lg" 
      onClick ={()=>{
@@ -129,21 +158,74 @@ let [스위치,스위치변경]= useState(false);
            Add to Cart
      </Button>
 
-     <Button className="secondary" size="lg">
+     <Button className="secondary" size="lg" onClick={Show}>
         바로구매하기
     </Button>
-        </div>
 
-          </div>
-        </div>
 
+{/* 회원가입창 ~~~~~~~~~~~~~~~~~~~*/}
+<Modal show={show} onHide={Close}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+             <h1>Pet Shop</h1>
+          </Modal.Title>
+        </Modal.Header>
+    <Modal.Body>
+
+<Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>이메일</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>비밀번호</Form.Label>
+    <Form.Control type="password" placeholder="password" />
+  </Form.Group>
+
+  <div className="d-grid gap-2">
+  <Button className="secondary" size="lg">
+    로그인
+  </Button>
+
+  <Container>
+      <p className="join">비밀번호 재설정/ 회원가입</p>
+      <p className="sns"> sns계정으로 간편 로그인/회원가입</p>
+  <Row >
+    <Col>
+      <img className="facebook" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/f.png?raw=true" width="40%" roundedCircle />
+     
+    </Col> 
+    <Col >
+    <img className="insta" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/i.png?raw=true" width="41%" roundedCircle />
+    </Col>
+    <Col>
+    <img className="naver" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/n.png?raw=true" width="40%" roundedCircle />
+    </Col>
+  </Row>
+</Container>
+  <Button className="primary" size="lg">
+        비회원구매하기
+  </Button>
+  </div>
+</Form>
+ </Modal.Body>
+ </Modal>
+     </div>
+    </div>
+    </div>
+
+{/* 하단 탭 만들기 */}
   <Nav className = "mt-5" variant="tabs" defaultActiveKey="link-0">
     <Nav.Item>
         <Nav.Link eventKey="link-0" 
-        onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>세부사항</Nav.Link>
+        onClick = {()=>{스위치변경(false); 누른탭변경(0)}}>배송관련</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-        <Nav.Link eventKey="link-1" onClick = {()=>{스위치변경(false); 누른탭변경(1)}}>배송관련</Nav.Link>
+        <Nav.Link eventKey="link-1" onClick = {()=>{스위치변경(false); 누른탭변경(1)}}>세부사항</Nav.Link>
     </Nav.Item>
     </Nav>
 
@@ -160,11 +242,13 @@ function TabContent(props){
  })
 
     if(props.누른탭작명 === 0){
-        return <div>
-          {/* <button className="sebu">세부사항을 확인하세요</button> */}
-        </div> 
+        return<div className="ex-img">
+        <img src={"https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/express.jpg?raw=true"} width="100%"/>
+        </div>
     }else if(props.누른탭작명 === 1){
-        return<div>1번째 내용입니다</div>
+        return <div>
+        상품상세 예정
+      </div> 
     }else if(props.누른탭작명 === 2){
         return<div>2번째 내용입니다</div>
     }
@@ -175,7 +259,7 @@ function TabContent(props){
   
   function Info(props){
       return(
-          <p> 재고: {props.재고작명[0]}</p>
+          <p> 재고가 {props.재고작명[0]}개 남았습니다</p>
       )
   }
 

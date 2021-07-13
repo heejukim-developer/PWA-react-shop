@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navbar, Container, Nav, NavDropdown, Button,ButtonGroup  } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown, Button,ButtonGroup,Spinner } from 'react-bootstrap';
 import React, { useEffect, useState ,useContext,lazy,Suspense} from 'react';
 import Data from './data';
 // import Detail from './Detail.js';
@@ -11,15 +11,8 @@ import './Detail.scss';
 import {Link, Route, Switch, useHistory, useParams} from 'react-router-dom';
 import {FiShoppingCart } from 'react-icons/fi';
 import {AiOutlineSearch} from 'react-icons/ai';
-
-
-
 let Detail = lazy(()=> import('./Detail'));
-
- 
 export let 재고context = React.createContext();
-
-
 function App() {
 let [inputData , inputData변경] = useState('');
 let [데이터,데이터변경]= useState(Data)
@@ -43,7 +36,7 @@ useEffect(()=>{
         <Nav.Link><Link to ="/">Home</Link></Nav.Link>
         {/* <Nav.Link><Link to ="/detail">Detail</Link></Nav.Link> */}
         <NavDropdown title="Shopping" id="basic-nav-dropdown">
-          <NavDropdown.Item href="/best">Best</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.1">Best</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">옷</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">용품</NavDropdown.Item>
         </NavDropdown>
@@ -69,9 +62,9 @@ useEffect(()=>{
 <Route exact path ="/">
 
  <div class ="welcome">
- <h2> 20% sale off</h2>
+ <h2 className="saleoff"> 20% sale off</h2>
   <p>어서오세요 애완용품 판매 홈페이지 입니다 </p>
-  <Button variant="outline-secondary">Learn more</Button>{' '}
+  <Button className="learnmore">Learn more</Button>{' '}
   </div>
 
   <div className="container">
@@ -111,25 +104,21 @@ useEffect(()=>{
 <Switch>
 <Route path ="/detail/:id">
  <재고context.Provider value={재고}>
-   <Suspense fallback = {<div>로딩중입니다 ! 잠시만 기다려주세요 </div>}>
+   <Suspense fallback = {<Spinner animation="border" role="status">
+  <span className="visually-hidden">Loading...</span>
+</Spinner>}>
   <Detail shoes작명 = {데이터} 재고작명 ={재고} 재고변경작명 ={재고변경}/>
   </Suspense>
   </재고context.Provider>
 </Route>
-
-{/* <Route path ="/detail/2">
-<image src= "https://github.com/heejukim-developer/shop/blob/master/src/3.jpg?raw=true"></image>
-</Route> */}
 
 <Route path ="/cart">
   <Cart></Cart>
 </Route>
 
 <Route path ="/:id">
-  <div> 페이지가 없습니다 </div>
+  <div> 상세페이지 준비중입니다 !  </div>
 </Route>
-
-
 
 </Switch>
 
@@ -168,8 +157,11 @@ function Card(props) {
    props.i+ '.jpg?raw=true'} width="100%" />
    
     <h5> {props.shoes.title} </h5>
-    <p> {props.shoes.price} </p>
-    {/* {props.shoes.content} */}
+    <span >
+    <p className="front_price">{props.shoes.price}</p>
+    <p className="front_real_price">{props.shoes.real_price}</p> 
+    </span>
+  
     <ButtonGroup size="sm">
     <Button className ="btn-sale">Sale</Button>
     <Button className ="btn-best">Best</Button>

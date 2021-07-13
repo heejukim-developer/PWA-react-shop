@@ -1,0 +1,48 @@
+a{
+    font-family: sans-serif !important;
+}
+.cart_front{
+    display: flex;
+    justify-content: center;
+}
+.cart_title{
+ margin: 20px 10px 20px 0;
+ font-size: 20px;
+ display: flex;
+ justify-content: center;
+
+}
+.fish{
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+
+}
+.my-alert2{
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%)!important;
+    color: #454545 !important;
+}
+.andshopping{
+        margin-right: 10px;
+        font-size: 18px !important;
+}
+.purchase{
+    font-size: 18px !important;
+    color:white !important;
+    background:#09addb!important;
+    border: 1px solid #09addb!important;
+    border-radius:20px !important;
+}
+.cart_alert{
+    padding-top: 10px;
+    font-weight:bold ;
+    text-align: center;
+    align-items: center;
+}
+.cart_close{
+    margin-top: 10px;
+    color:#757575!important;
+    background:rgba(255, 255, 255, 0.096)!important;
+    border: 1px solid #757575!important;
+    border-radius: 20px !important;
+}

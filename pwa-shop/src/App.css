@@ -20,6 +20,12 @@ a{
   text-decoration: none ;
 }
 
+.btn-primary.learnmore{
+    color:#eeeeee !important;
+    background:#f8f6f68c!important;
+    border: 1px solid #f8f6f68c!important;
+    border-radius: 20px !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -64,18 +70,34 @@ a{
   margin-top: 50px;
 }
 .btn-primary{
-  background: #fee140 !important;
-  border-radius: 0px!important;
-  border-color: #eeeeee!important;
-  color: #282c34!important;
+    color:#09addb!important;
+    background:white!important;
+    border: 1px solid #09addb!important;
+    border-radius: 20px !important;
 }
 .btn-sale{
+  color: aliceblue !important;
   background: #fe5356 !important;
   border: 1px solid #fe5356!important;
   border-radius: 0% !important;
 }
 .btn-best{
+  color: aliceblue !important;
   background:#fee140!important;
   border: 1px solid #fee140!important;
   border-radius: 0% !important;
+}
+
+.front_price{
+  text-decoration:line-through;
+  margin-top: 5px;
+}
+.front_real_price{
+  margin-bottom: 5px;
+  margin-top: -10px;
+}
+.saleoff{
+  color:#fee140!important;
+  
+
 }

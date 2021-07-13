@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import cart from './Cart'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -19,7 +20,7 @@ function reducer2(state= alert초기값, 액션){
 }
 
 let 초기값 =[
-    {id:0,name:'분리불안 방지 로봇',quan:2,color:'red'},
+    {id:0,name:'분리불안 방지 로봇',quan:1,color:'red'},
     {id:1,name:'펫모이스 실리콘 브러쉬',quan:1,color:'white'}
 ]
 

@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { Table,CloseButton } from 'react-bootstrap';
+import { Table,CloseButton,Button,Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
+import './Cart.css';
+import {useHistory} from 'react-router-dom';
+import {FiShoppingCart } from 'react-icons/fi';
+import { show } from './Detail.js';
 
 function Cart(props){
+    let [show, setShow] = useState(false);
 
+    let Close = () => setShow(false);
+    let Show = () => setShow(true);
     
+let history =useHistory();
 return(
 <div>
-<p>장바구니</p>
+<span className="cart_front">
+<h2 className="cart_title">장바구니</h2>
+<FiShoppingCart className="fish"/></span>
 <Table striped bordered hover>
     <tr>
       <th>#</th>
@@ -38,14 +47,21 @@ return(
       {
           props.alert열렸니 === true
         ?(<div className = 'my-alert2'>
-        <p>지금 구매하시면 신규고객 20%할인</p>
-        <button onClick={()=>{props.dispatch({type:'alert닫기'})}}>
+        <p className ="cart_alert">지금 구매하시면 신규고객 20%할인</p>
+        <button className ="cart_close" onClick={()=>{props.dispatch({type:'alert닫기'})}}>
         닫기</button>
         </div>)
         :null
       }
-    
-
+    <Button className="andshopping" size="lg"
+    onClick={()=>{history.push('/')}}>
+        계속쇼핑하기
+    </Button>
+    <Button className="purchase" size="lg" 
+    onClick={show}>
+      바로구매하기 
+      <Modal></Modal>
+    </Button>
 </div>
 
     )
