@@ -24,14 +24,8 @@ a{
 }
 .andshopping{
         margin-right: 10px;
-        font-size: 18px !important;
-}
-.purchase{
-    font-size: 18px !important;
-    color:white !important;
-    background:#09addb!important;
-    border: 1px solid #09addb!important;
-    border-radius:20px !important;
+        font-size: 20 px !important;
+        
 }
 .cart_alert{
     padding-top: 10px;
@@ -45,4 +39,11 @@ a{
     background:rgba(255, 255, 255, 0.096)!important;
     border: 1px solid #757575!important;
     border-radius: 20px !important;
+}
+.plus{
+    border: 0px;
+    margin-right: 3px;
+}
+.minus{
+    border: 0px;
 }

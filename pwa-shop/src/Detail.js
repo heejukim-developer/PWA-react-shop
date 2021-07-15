@@ -41,6 +41,16 @@ let Close = () => setShow(false);
 let Show = () => setShow(true);
 
 
+useEffect(()=>{
+    var arr= localStorage.getItem('watched');
+     if (arr===null) {arr=[]} else{ arr=JSON.parse(arr)};
+ 
+     arr.push(id);
+     arr = new Set(arr);
+     arr = [...arr];
+     localStorage.setItem('watched',JSON.stringify(arr));
+ },[])
+ 
 
     return(
         
@@ -164,6 +174,7 @@ let Show = () => setShow(true);
 
 
 {/* 회원가입창 ~~~~~~~~~~~~~~~~~~~*/}
+
 <Modal show={show} onHide={Close}>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -214,6 +225,7 @@ let Show = () => setShow(true);
 </Form>
  </Modal.Body>
  </Modal>
+
      </div>
     </div>
     </div>
@@ -270,4 +282,7 @@ function state를props화 (state){
        alert열렸니:state.reducer2
     }
 }
+
+
+
 export default connect(state를props화)(Detail)

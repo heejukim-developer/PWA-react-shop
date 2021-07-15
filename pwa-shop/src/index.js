@@ -20,8 +20,9 @@ function reducer2(state= alert초기값, 액션){
 }
 
 let 초기값 =[
-    {id:0,name:'분리불안 방지 로봇',quan:1,color:'red'},
-    {id:1,name:'펫모이스 실리콘 브러쉬',quan:1,color:'white'}
+  
+    {id:0,name:'분리불안 방지 로봇',quan:1},
+    {id:1,name:'펫모이스 실리콘 브러쉬',quan:1}
 ]
 
 function reducer(state=초기값,액션){
@@ -30,14 +31,11 @@ function reducer(state=초기값,액션){
     if (found >= 0){
       let copy=[...state];
       copy[found].quan++;
-      return copy
-  
-    }else{
+      return copy }
+    else{
       let copy=[...state];
       copy.push(액션.장바구니데이터);
-      return copy
-    }
-   
+      return copy}
   }
   else if (액션.type === '수량증가'){
     let copy=[...state];
@@ -47,9 +45,20 @@ function reducer(state=초기값,액션){
     let copy=[...state];
     copy[액션.장바구니데이터].quan--;
   return copy
-} else{
+} 
+else if(액션.type ==='삭제하기'){
+  let copy=[...state];
+  copy[액션.장바구니데이터].handleDelete();
+return copy
+} 
+else{
     return state
 }
+
+
+
+
+
 
 };
 
