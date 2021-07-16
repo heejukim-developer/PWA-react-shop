@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import cart from './Cart'
+import Data from './data';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -18,38 +19,36 @@ function reducer2(state= alert초기값, 액션){
     return state 
   }
 }
-
-let 초기값 =[
-  
-    {id:0,name:'분리불안 방지 로봇',quan:1},
-    {id:1,name:'펫모이스 실리콘 브러쉬',quan:1}
-]
-
+let 초기값 =[];
 function reducer(state=초기값,액션){
   if(액션.type === '항목추가'){
-    let found= state.findIndex((a)=>{return a.id ===액션.장바구니데이터.id});
+    let copy =[...state];
+    let found= copy.findIndex((a)=>{return a.id ===액션.장바구니데이터.id});
+    
     if (found >= 0){
-      let copy=[...state];
       copy[found].quan++;
       return copy }
     else{
       let copy=[...state];
       copy.push(액션.장바구니데이터);
-      return copy}
+      return copy
+    }
   }
   else if (액션.type === '수량증가'){
     let copy=[...state];
-    copy[액션.장바구니데이터].quan++;
-  return copy 
+    let 같은값= copy.findIndex((a) => { return a.id === 액션.장바구니데이터}); 
+    copy[같은값].quan++;
+    return copy 
 } else if(액션.type ==='수량감소'){
     let copy=[...state];
-    copy[액션.장바구니데이터].quan--;
-  return copy
+    let 같은값= copy.findIndex((a) => { return a.id === 액션.장바구니데이터}); 
+    copy[같은값].quan--;
+    return copy
 } 
-else if(액션.type ==='삭제하기'){
-  let copy=[...state];
-  copy[액션.장바구니데이터].handleDelete();
-return copy
+  else if(액션.type === '삭제하기'){
+    let copy =[...state];
+    let copy2 = copy.filter((a)=> { return a.id !== 액션.장바구니데이터})
+    return copy2
 } 
 else{
     return state

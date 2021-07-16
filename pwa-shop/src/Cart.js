@@ -20,9 +20,9 @@ return(
 <span className="cart_front">
 <h2 className="cart_title">장바구니</h2>
 <FiShoppingCart className="fish"/></span>
-<Table striped bordered hover>
+<Table striped bordered hover >
     <tr>
-      <th>#</th>
+      <th>번호</th>
       <th>상품명</th>
       <th>수량</th>
       <th>수량</th>
@@ -35,14 +35,13 @@ return(
         return(
         <tr key ={i}>
             <td>{a.id}</td>
-            <td>{a.name}</td>
+            <td className="ordername">{a.name}</td>
             <td>{a.quan}</td>
-            <td><button className="plus" onClick ={()=>{props.dispatch({type :'수량증가',장바구니데이터 : a.id})}}>+</button>
+            <td ><button className="plus" onClick ={()=>{props.dispatch({type :'수량증가',장바구니데이터 : a.id})}}>+</button>
                 <button className="minus" onClick ={()=>{props.dispatch({type :'수량감소',장바구니데이터 : a.id})}}>-</button>
             </td>
             <td>
-                <CloseButton onClick={()=>{props.dispatch({type :'삭제하기',장바구니데이터 : a.id})}}>x
-                </CloseButton>
+            <button className="orderclose"onClick={()=>{props.dispatch({type:'삭제하기',장바구니데이터 : a.id})}}>x</button>
             </td>
             </tr>)
         })}

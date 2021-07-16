@@ -1,5 +1,10 @@
 a{
     font-family: sans-serif !important;
+    font-size: 20px !important;
+}
+table{
+    table-layout:fixed;
+    
 }
 .cart_front{
     display: flex;
@@ -46,4 +51,13 @@ a{
 }
 .minus{
     border: 0px;
+}
+.orderclose{
+    border: 0px;
+}
+.ordername{
+    font-size: 15px !important;
+    
+   
+    
 }
