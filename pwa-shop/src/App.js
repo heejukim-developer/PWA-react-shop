@@ -63,7 +63,7 @@ useEffect(()=>{
 
  <div class ="welcome">
  <h2 className="saleoff"> 20% sale off</h2>
-  <p>어서오세요 애완용품 판매 홈페이지 입니다 ~</p>
+  <p>어서오세요 애완용품 판매 홈페이지 입니다 </p>
   <Button className="learnmore">Learn more</Button>{' '}
   </div>
 
