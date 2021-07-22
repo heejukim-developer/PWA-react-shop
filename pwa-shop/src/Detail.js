@@ -178,7 +178,7 @@ useEffect(()=>{
 <Modal show={show} onHide={Close}>
         <Modal.Header closeButton>
           <Modal.Title>
-             <h1>Pet Shop</h1>
+             <h1 className="modal-title">Pet Shop</h1>
           </Modal.Title>
         </Modal.Header>
     <Modal.Body>
@@ -202,13 +202,14 @@ useEffect(()=>{
     로그인
   </Button>
 
+  <p className="join">비밀번호 재설정/ 회원가입</p>
+  <p className="sns"> sns계정으로 간편 로그인/회원가입</p>
   <Container>
-      <p className="join">비밀번호 재설정/ 회원가입</p>
-      <p className="sns"> sns계정으로 간편 로그인/회원가입</p>
-  <Row >
+      
+  <div className="sns_img">
+  <Row  >
     <Col>
       <img className="facebook" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/f.png?raw=true" width="40%" roundedCircle />
-     
     </Col> 
     <Col >
     <img className="insta" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/i.png?raw=true" width="41%" roundedCircle />
@@ -217,7 +218,9 @@ useEffect(()=>{
     <img className="naver" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/n.png?raw=true" width="40%" roundedCircle />
     </Col>
   </Row>
+  </div>
 </Container>
+
   <Button className="primary" size="lg">
         비회원구매하기
   </Button>
