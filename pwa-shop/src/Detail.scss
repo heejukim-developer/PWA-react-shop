@@ -275,9 +275,11 @@ opacity: 0;
 //     text-align: center;
 
 // }
-.row{
- margin-left: 30px;
-   
+
+
+.col{
+    justify-content: center ; 
+    padding: 5px 0px 0px !important;
 }
 .facebook{
     display: flex;

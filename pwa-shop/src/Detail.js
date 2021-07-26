@@ -209,19 +209,19 @@ useEffect(()=>{
   <div className="sns_img">
   <Row  >
     <Col>
-      <img className="facebook" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/f.png?raw=true" width="40%" roundedCircle />
+      <img className="facebook" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/f.png?raw=true" width="50%" roundedCircle />
     </Col> 
     <Col >
-    <img className="insta" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/i.png?raw=true" width="41%" roundedCircle />
+    <img className="insta" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/i.png?raw=true" width="50%" roundedCircle />
     </Col>
     <Col>
-    <img className="naver" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/n.png?raw=true" width="40%" roundedCircle />
+    <img className="naver" src="https://github.com/heejukim-developer/PWA-react-shop/blob/main/pwa-shop/src/n.png?raw=true" width="50%" roundedCircle />
     </Col>
   </Row>
   </div>
 </Container>
 
-  <Button className="primary" size="lg">
+  <Button className="primary" size="lg" >
         비회원구매하기
   </Button>
   </div>

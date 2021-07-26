@@ -50,7 +50,7 @@ return(
       {
           props.alert열렸니 === true
         ?(<div className = 'my-alert2'>
-        <p className ="cart_alert">지금 구매하시면 신규고객 20%할인</p>
+        <p className ="cart_alert">지금 구매하시면 신규고객 20% 할인</p>
         <button className ="cart_close" onClick={()=>{props.dispatch({type:'alert닫기'})}}>
         닫기</button>
         </div>)
